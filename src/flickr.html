@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Flickr Photo Search</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">	
+		<link href="css/flickr_style.css" rel="stylesheet">			
+	</head>
+	<body>
+		<div class="container">
+			<div>
+			   <h1 class="title">Get Random Picture</h1><br/>
+			   <div class="contentWrapper">
+				   <div class="right">
+					   <label >Key Word: </label>
+					   <input type="text" id="searchField" />						   
+					   <input class="btn btn-default" type="button" id="pictureButton" value="Get Picture" />
+				   </div>
+				   <div id="stage"></div>  
+			   </div>
+			</div>		   
+	    </div>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" language="javascript">
+		$(document).ready(function() {    
+			$("#pictureButton").click(function(event){
+				$('#stage').empty();
+				var keyword=document.getElementById('searchField').value;
+				var apiKey="1d84faa895add83ca304150d58b68a3d";
+				var url="https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+apiKey+"&text="+keyword+"&tags="+keyword+"&format=json&nojsoncallback=1";
+				$.getJSON(url, function(jd) {
+					var ran=Math.floor((Math.random()*jd.photos.photo.length));
+					 $('#stage').append('<img src=' + "https://farm"+ jd.photos.photo[ran].farm+".staticflickr.com/"+ jd.photos.photo[ran].server +"/"+jd.photos.photo[ran].id+"_"+jd.photos.photo[ran].secret+".jpg" +'>');
+				});										  
+			});
+		});
+		</script>
+	</body>
+</html>

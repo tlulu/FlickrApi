@@ -1,0 +1,26 @@
+.title
+{
+	text-align:center;
+	margin:auto;
+	width:50%;
+	background-color:#b0e0e6;
+
+}
+
+.right{
+	float:right;
+}
+
+.contentWrapper{
+	margin-top:100px;
+	margin-right:auto;
+	margin-left:auto;
+	margin-bottom:100px;
+	background-color:white;
+	width:100% auto;
+	height:100% auto;
+	padding:30px;
+	border-radius: 10px;
+	box-shadow:0px 0px 50px #888888;
+
+}
